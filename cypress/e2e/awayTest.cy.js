@@ -149,3 +149,6 @@ describe(`Testing Gallery`, function () {
 
     })
 })
+
+//Last two tasks were not completed due to lack of time.
+//I'm going to do it later this week and push it to the same repository
