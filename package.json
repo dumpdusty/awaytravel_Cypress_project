@@ -1,0 +1,16 @@
+{
+  "name": "awaytravel_cypress_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^10.11.0",
+    "cypress-real-events": "^1.7.2"
+  }
+}
