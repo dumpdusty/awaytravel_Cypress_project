@@ -163,5 +163,20 @@ describe(`Testing Gallery`, function () {
 
 })
 
+describe(`Testing map section`, function () {
+    before(function () {
+        cy.visit(`/stores/austin`)
+    })
+
+    it.only(`Test 10.0 store pinned on google maps`, function () {
+        cy.get(`[aria-label="Map"]`).should(`be.visible`)
+        cy.get(`[aria-label="Away in Austin: Domain Northside"]`).should('be.visible')
+        cy.get(`[itemprop="addressLocality"]`).should(`contain`, `Austin`)
+        cy.get(`[class^="store_location_info_infoContainer"]`).should(`contain`, `Austin`)
+        cy.get(`[class^="store_location_info_infoContainer"]`).should(`contain`, `Hours`)
+
+    })
+})
+
 //Last two tasks were not completed due to lack of time.
 //I'm going to do it later this week and push it to the same repository
