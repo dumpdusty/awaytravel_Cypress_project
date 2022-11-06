@@ -127,8 +127,16 @@ describe(`Testing Chicago store`, function () {
 
 describe(`Testing Gallery`, function () {
     before(function(){
-        cy.visit(`/stores`)
-        cy.get(`[data-link="/stores/houston"]`).click()
+        cy.visit(`/stores/austin`)
+
+        //preparation to test# 9.2
+
+        //get first alias
+        cy.get(`[class="swiper-wrapper"]`).invoke(`attr`, `style`).as(`pic1`)
+        //change the picture
+        cy.get(`[aria-label="next slide"]`).click()
+        //get second alias
+        cy.get(`[class="swiper-wrapper"]`).invoke(`attr`, `style`).as(`pic2`)
     })
 
     it(`Test 9.1 check the all images loaded`, function () {
@@ -148,6 +156,11 @@ describe(`Testing Gallery`, function () {
         cy.get(`[class*="prevButton"]`).should('be.visible')
 
     })
+
+    it(`Test 9.2 check the arrow buttons are working`, function () {
+       expect(`@pic1`).to.not.equal(`@pic2`)
+    })
+
 })
 
 //Last two tasks were not completed due to lack of time.
