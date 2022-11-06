@@ -142,7 +142,7 @@ describe(`Testing Gallery`, function () {
     it(`Test 9.1 check the all images loaded`, function () {
         cy.get(`[class="component component-gallery"]`)
             .find(`[class^="image_component"]`).each((el) => {
-            cy.wait(5000)
+            cy.wait(3000)
             cy.wrap(el).should('exist')
                 .and((el) => {
                     expect(el[0].naturalWidth).to.be.greaterThan(0)
@@ -178,7 +178,8 @@ describe(`Check the map and address areas`, function () {
 
     })
 })
-describe.only(`Check if user could drug the map`, function () {
+
+describe(`Check if user could drag the map`, function () {
     before(function () {
         cy.visit(`/stores/austin`)
 
@@ -196,6 +197,31 @@ describe.only(`Check if user could drug the map`, function () {
         expect(`@pos1`).to.not.eq(`@pos2`)
     })
 
+describe.only(`Check if map could be zoomed in and out`, function () {
+    before(function () {
+        cy.visit(`/stores/austin`)
+
+        //defining the variables for check the map is zoom in amd zoom out
+        cy.get(`[style*="transform: matrix"]`)
+            .eq(0)
+            .invoke(`attr`, `style`).as(`zoom1`)
+        cy.get(`[aria-label="Zoom in"]`).click()
+        cy.get(`[style*="transform: matrix"]`)
+            .eq(0)
+            .invoke(`attr`, `style`).as(`zoom2`)
+        cy.get(`[aria-label="Zoom out"]`).click()
+        cy.get(`[style*="transform: matrix"]`)
+            .eq(0)
+            .invoke(`attr`, `style`).as(`zoom3`)
+
+    })
+
+    it(`Test 10.2 Zoom in-Zoom out`, function () {
+         expect(`@zoom1`).to.not.eq(`@zoom2`)
+         expect(`@zoom2`).to.not.eq(`@zoom3`)
+
+    })
+})
 
 })
 
