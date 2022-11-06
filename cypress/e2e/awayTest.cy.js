@@ -197,31 +197,31 @@ describe(`Check if user could drag the map`, function () {
         expect(`@pos1`).to.not.eq(`@pos2`)
     })
 
-describe.only(`Check if map could be zoomed in and out`, function () {
-    before(function () {
-        cy.visit(`/stores/austin`)
+    describe.only(`Check if map could be zoomed in and out`, function () {
+        before(function () {
+            cy.visit(`/stores/austin`)
 
-        //defining the variables for check the map is zoom in amd zoom out
-        cy.get(`[style*="transform: matrix"]`)
-            .eq(0)
-            .invoke(`attr`, `style`).as(`zoom1`)
-        cy.get(`[aria-label="Zoom in"]`).click()
-        cy.get(`[style*="transform: matrix"]`)
-            .eq(0)
-            .invoke(`attr`, `style`).as(`zoom2`)
-        cy.get(`[aria-label="Zoom out"]`).click()
-        cy.get(`[style*="transform: matrix"]`)
-            .eq(0)
-            .invoke(`attr`, `style`).as(`zoom3`)
+            //defining the variables for check the map is zoom in amd zoom out
+            cy.get(`[style*="transform: matrix"]`)
+                .eq(0)
+                .invoke(`attr`, `style`).as(`zoom1`)
+            cy.get(`[aria-label="Zoom in"]`).click()
+            cy.get(`[style*="transform: matrix"]`)
+                .eq(0)
+                .invoke(`attr`, `style`).as(`zoom2`)
+            cy.get(`[aria-label="Zoom out"]`).click()
+            cy.get(`[style*="transform: matrix"]`)
+                .eq(0)
+                .invoke(`attr`, `style`).as(`zoom3`)
 
+        })
+
+        it(`Test 10.2 Zoom in-Zoom out`, function () {
+            expect(`@zoom1`).to.not.eq(`@zoom2`)
+            expect(`@zoom2`).to.not.eq(`@zoom3`)
+
+        })
     })
-
-    it(`Test 10.2 Zoom in-Zoom out`, function () {
-         expect(`@zoom1`).to.not.eq(`@zoom2`)
-         expect(`@zoom2`).to.not.eq(`@zoom3`)
-
-    })
-})
 
 })
 
