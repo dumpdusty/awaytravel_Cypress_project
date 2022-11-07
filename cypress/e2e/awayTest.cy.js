@@ -189,10 +189,8 @@ describe(`Check if user could drag the map`, function () {
         cy.get(`[aria-label="Map"]`).trigger(`mousemove`, {which: 1, pageX: 100, pageY: 100})
         cy.get(`[style^="z-index: 1;"]`).invoke(`attr`, `style`).as(`pos2`)
         cy.get(`[aria-label="Map"]`).trigger(`mouseup`)
-
-        ////defining the variables for check the map zoom in
-
     })
+    
     it(`Test 10.1 Drag the map`, function () {
         expect(`@pos1`).to.not.eq(`@pos2`)
     })
@@ -202,16 +200,13 @@ describe(`Check if user could drag the map`, function () {
             cy.visit(`/stores/austin`)
 
             //defining the variables for check the map is zoom in amd zoom out
-            cy.get(`[style*="transform: matrix"]`)
-                .eq(0)
+            cy.get(`[style*="transform: matrix"]`).eq(0)
                 .invoke(`attr`, `style`).as(`zoom1`)
             cy.get(`[aria-label="Zoom in"]`).click()
-            cy.get(`[style*="transform: matrix"]`)
-                .eq(0)
+            cy.get(`[style*="transform: matrix"]`).eq(0)
                 .invoke(`attr`, `style`).as(`zoom2`)
             cy.get(`[aria-label="Zoom out"]`).click()
-            cy.get(`[style*="transform: matrix"]`)
-                .eq(0)
+            cy.get(`[style*="transform: matrix"]`).eq(0)
                 .invoke(`attr`, `style`).as(`zoom3`)
 
         })
