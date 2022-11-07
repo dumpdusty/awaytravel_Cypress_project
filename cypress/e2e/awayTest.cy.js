@@ -222,3 +222,6 @@ describe(`Check if user could drag the map`, function () {
 
 //Last two tasks were not completed due to lack of time.
 //I'm going to do it later this week and push it to the same repository
+
+//Update:
+//The all tasks is covered now. There a some bugs found during the testing. Additionla information could be provided upon request.
